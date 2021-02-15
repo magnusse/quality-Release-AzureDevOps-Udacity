@@ -52,10 +52,10 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         environmentServiceNameAzureRM: 'EnsuringQualityReleasesSC'
 
-- stage: Build
-  jobs:
-  - job: Build
-    pool:
+  - stage: Build
+    jobs:
+    - job: Build
+      pool:
       name: Hosted Ubuntu 1604
     steps:
     # Needed for Terraform VM deployment
