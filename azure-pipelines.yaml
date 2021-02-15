@@ -8,11 +8,11 @@ variables:
   terraform.version: '0.13.4'
 stages:
   - stage: Provisioning
-  displayName: Provisioning
-  jobs: 
-  - job: ProvisioningAppService
-    displayName: Provisioning AppService
-    steps:
+    displayName: Provisioning
+    jobs: 
+    - job: ProvisioningAppService
+      displayName: Provisioning AppService
+      steps:
     - task: InstallSSHKey@0
       inputs:
         knownHostsEntry: 'default'
