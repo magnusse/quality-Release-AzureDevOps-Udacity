@@ -53,6 +53,7 @@ stages:
           environmentServiceNameAzureRM: 'EnsuringQualityReleasesSC'
 
   - stage: Build
+    displayName: Build
     jobs:
     - job: Build
       pool:
