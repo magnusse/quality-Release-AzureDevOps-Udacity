@@ -4,7 +4,6 @@ trigger:
   
 name: Azure Pipelines
 variables:
-variables:
   python.version: '3.7.6'
   terraform.version: '0.13.4'
 stages:
