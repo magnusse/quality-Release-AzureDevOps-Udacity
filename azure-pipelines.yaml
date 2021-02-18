@@ -35,7 +35,7 @@ stages:
           backendAzureRmResourceGroupName: 'crossfunctional-dev'
           backendAzureRmStorageAccountName: 'crossfunctionaldata'
           backendAzureRmContainerName: 'tfstate'
-          backendAzureRmKey: 'ensuring-quality-releases.tfstate'
+          backendAzureRmKey: 'prod.terraform.tfstate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
       - task: TerraformTaskV1@0
         displayName: Terraform Plan
