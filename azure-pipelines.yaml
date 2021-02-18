@@ -21,7 +21,7 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            ls /home/smatest/work/
+            ls /home/vsts/work/
       - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
         displayName: Install Terraform
         inputs:
