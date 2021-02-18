@@ -31,7 +31,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          backendServiceArm: 'EnsuringQualityReleasesSC'
+          backendServiceArm: 'UdacityQualityReleasesSC'
           backendAzureRmResourceGroupName: 'RG-SUPPORT'
           backendAzureRmStorageAccountName: 'sageneralsupport'
           backendAzureRmContainerName: 'terraform-state'
