@@ -32,9 +32,9 @@ stages:
           provider: 'azurerm'
           command: 'init'
           backendServiceArm: 'UdacityQualityReleasesSC'
-          backendAzureRmResourceGroupName: 'RG-SUPPORT'
-          backendAzureRmStorageAccountName: 'sageneralsupport'
-          backendAzureRmContainerName: 'terraform-state'
+          backendAzureRmResourceGroupName: 'crossfunctional-dev'
+          backendAzureRmStorageAccountName: 'crossfunctionaldata'
+          backendAzureRmContainerName: 'tfstate'
           backendAzureRmKey: 'ensuring-quality-releases.tfstate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
       - task: TerraformTaskV1@0
