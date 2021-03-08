@@ -58,7 +58,7 @@ stages:
     jobs:
     - job: Build
       pool:
-        name: Hosted Ubuntu 1604
+        name: Hosted Ubuntu 1804
       steps:
     # Needed for Terraform VM deployment
     # - task: InstallSSHKey@0
@@ -86,13 +86,13 @@ stages:
           replaceExistingArchive: true
       - upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
         artifact: selenium
-  - stage: FakeRestDeploy
+  - stage: Deploy
     displayName: Deploy FakeRest WebApp
     jobs:
     - deployment: FakeRestAPI
       pool:
-        vmImage: 'Ubuntu-16.04'
-      environment: 'Test'
+        vmImage: 'Ubuntu-18.04'
+      environment: 'Test-VM'
       strategy:
         runOnce:
           deploy:
