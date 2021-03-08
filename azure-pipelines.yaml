@@ -100,7 +100,7 @@ stages:
             - task: AzureWebApp@1
               displayName: 'Deploy Azure Web App'
               inputs:
-#                azureSubscription: 'Kostenlose Testversion'
+                azureSubscription: 'Kostenlose Testversion'
                 appName: 'webApp-SMArtificial'
                 appType: webApp
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
@@ -108,7 +108,7 @@ stages:
     - deployment: VMDeploy
       displayName: VM Deploy
       environment:
-        name:  'VM-TEST'
+        name:  'WebApp-VM'
         resourceType: VirtualMachine
       strategy:
         runOnce:
