@@ -101,7 +101,7 @@ stages:
               displayName: 'Deploy Azure Web App'
               inputs:
                 azureSubscription: 'UdacityQualityReleasesSC'
-                WebAppName: 'webappsmartificial'
+                WebAppName: 'WebAppSmartificial'
                 packageForLinux: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 enableCustomDeployment: true
                 DeploymentType: zipDeploy
