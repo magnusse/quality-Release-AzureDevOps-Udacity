@@ -101,8 +101,8 @@ stages:
               displayName: 'Deploy Azure Web App'
               inputs:
                 azureSubscription: 'UdacityQualityReleasesSC'
-                appName: WebApp-SMArtificial
-                appType: webApp
+                appName: 'WebApp-SMArtificial'
+                appType: 'WebApp'
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 deploymentMethod: auto
 
@@ -121,7 +121,7 @@ stages:
                 targetType: 'inline'
                 script: |
                   #! /bin/bash
-                
+                  sudo apt-get update
                   sudo apt-get install software-properties-common -y
                   sudo apt-add-repository universe -y
                   sudo apt-get update -ysudo apt-get upgrade -y
