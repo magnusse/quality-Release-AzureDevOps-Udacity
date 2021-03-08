@@ -101,7 +101,7 @@ stages:
               displayName: 'Deploy Azure Web App'
               inputs:
                 azureSubscription: 'UdacityQualityReleasesSC'
-                appName: 'WebApp-SMArtificial'
+                appName: 'WebAppSmartificial'
                 appType: 'WebApp'
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
                 deploymentMethod: auto
