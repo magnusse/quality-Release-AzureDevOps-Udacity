@@ -91,8 +91,8 @@ stages:
     jobs:
     - deployment: FakeRestAPI
       pool:
-        vmImage: 'Ubuntu-18.04'
-      environment: 'TEST'
+        vmImage: 'Ubuntu-16.04'
+      environment: 'Test'
       strategy:
         runOnce:
           deploy:
@@ -100,15 +100,16 @@ stages:
             - task: AzureWebApp@1
               displayName: 'Deploy Azure Web App'
               inputs:
-                azureSubscription: 'Kostenlose Testversion'
-                appName: 'webApp-SMArtificial'
+                azureSubscription: 'UdacityQualityReleasesSC'
+                appName: WebApp-SMArtificial
                 appType: webApp
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
+                deploymentMethod: auto
 
     - deployment: VMDeploy
       displayName: VM Deploy
       environment:
-        name:  'VM-TEST'
+        name:  'Test-VM'
         resourceType: VirtualMachine
       strategy:
         runOnce:
@@ -162,7 +163,7 @@ stages:
     - deployment: VMRunUITests
       displayName: Run UI Tests
       environment:
-        name:  'VM-TEST'
+        name:  'Test-VM'
         resourceType: VirtualMachine
       strategy:
         runOnce:
