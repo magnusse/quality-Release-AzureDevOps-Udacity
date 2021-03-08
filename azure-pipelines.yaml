@@ -87,9 +87,9 @@ stages:
       - upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
         artifact: selenium
   - stage: Deploy
-    displayName: Deploy FakeRest WebApp
     jobs:
     - deployment: FakeRestAPI
+      displayName: Deploy FakeRest WebApp
       pool:
         vmImage: 'Ubuntu-18.04'
       environment: 'Test-VM'
@@ -102,9 +102,9 @@ stages:
               inputs:
                 azureSubscription: 'UdacityQualityReleasesSC'
                 appName: 'WebAppSmartificial'
-                appType: 'app'
+                appType: 'webApp'
                 package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
-                deploymentMethod: auto
+                deploymentMethod: zipDeploy
 
     - deployment: VMDeploy
       displayName: VM Deploy
