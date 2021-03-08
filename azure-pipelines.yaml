@@ -178,7 +178,7 @@ stages:
                 script: |
                   unzip -o $(Pipeline.Workspace)/selenium/selenium-tests.zip -d .
                   sudo mkdir /var/logs
-                  python3 uitests.py > ui-logs.log
+                  python3 UItest.py > ui-logs.log
                   cat ui-logs.log
                   sudo mv ui-logs.log /var/logs
 
@@ -189,24 +189,24 @@ stages:
       displayName: PostmanTests
       steps: 
       - task: NodeTool@0
-        displayName: Install Node v12.X
+        displayName: Install nodejs for Testdeck Postman
         inputs:
           versionSpec: '12.x'
       - task: CmdLine@2
-        displayName: Install Newman
+        displayName: Install Testdeck Postman (Newman)
         inputs:
           script: 'npm install newman'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
       - task: CmdLine@2
-        displayName: Run Regression Tests
+        displayName: Starting Potman RegressionTest
         inputs:
-          script: 'newman run automatedtesting/postman/RegressionTestSuite.json -e automatedtesting/postman/RegressionTestSuite.Environment.json --delay-request 5000 --bail newman -x --reporters cli,junit --reporter-junit-export Results/RegressionTests.xml'
+          script: 'newman run "automatedtesting/postman/Regression Test Suite.postman_collection.json" -e "automatedtesting/postman/Test Suite SMA.postman_environment.json" --delay-request 5000 --bail newman -x --reporters cli,junit --reporter-junit-export Results/RegressionTests.xml'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
         continueOnError: true
       - task: CmdLine@2
         displayName: Run Data Validation Tests
         inputs:
-          script: 'newman run automatedtesting/postman/DataValidationTestSuite.json -e automatedtesting/postman/DataValidationTestSuite.Environment.json --delay-request 5000 --bail newman -x --reporters cli,junit --reporter-junit-export Results/DataValidationTests.xml'
+          script: 'newman run "automatedtesting/postman/Data Validation Test Suite.postman_collection.json" -e "automatedtesting/postman/Test Suite SMA2.postman_environment.json" --delay-request 5000 --bail newman -x --reporters cli,junit --reporter-junit-export Results/DataValidationTests.xml'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
         continueOnError: true
       - task: CmdLine@2
@@ -233,12 +233,12 @@ stages:
         displayName: EnduranceTest
         inputs:
           targetType: 'inline'
-          script: 'jmeter -n -t automatedtesting/jmeter/EnduranceTestSuite.jmx -Jresdir=automatedtesting/jmeter/endurancepages.csv -l automatedtesting/jmeter/report/enduranceresults.jtl -e -o automatedtesting/jmeter/endurancereport'
+          script: 'jmeter -n -t automatedtesting/jmeter/endurancetest.jmx -Jresdir=automatedtesting/jmeter/query_ids.csv -l automatedtesting/jmeter/report/enduranceresults.jtl -e -o automatedtesting/jmeter/endurancereport'
       - task: Bash@3
         displayName: StressTest
         inputs:
           targetType: 'inline'
-          script: 'jmeter -n -t automatedtesting/jmeter/StressTestSuite.jmx -Jresdir=automatedtesting/jmeter/stresspages.csv -l automatedtesting/jmeter/report/stressresults.jtl -e -o automatedtesting/jmeter/stressreport'
+          script: 'jmeter -n -t "automatedtesting/jmeter/stress test.jmx" -Jresdir=automatedtesting/jmeter/stress_ids.csv -l automatedtesting/jmeter/report/stressresults.jtl -e -o automatedtesting/jmeter/stressreport'
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: 'automatedtesting/jmeter'
