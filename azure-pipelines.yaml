@@ -92,7 +92,7 @@ stages:
     - deployment: FakeRestAPI
       pool:
         vmImage: 'Ubuntu-16.04'
-      environment: 'Test-VM'
+      environment: 'Test'
       strategy:
         runOnce:
           deploy:
