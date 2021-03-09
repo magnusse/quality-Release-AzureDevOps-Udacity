@@ -100,7 +100,7 @@ stages:
             - task: AzureRmWebAppDeployment@4
               displayName: 'Deploy Azure Web App'
               inputs:
-                azureSubscription: 'UdacityQualityReleasesSC'
+                azureSubscription: 'UdacityQR-AppServices'
                 WebAppName: 'WebAppSmartificial'
                 Package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
     - deployment: VMDeploy
