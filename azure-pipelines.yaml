@@ -102,11 +102,7 @@ stages:
               inputs:
                 azureSubscription: 'UdacityQualityReleasesSC'
                 WebAppName: 'WebAppSmartificial'
-               # appType: webAppLinux
                 Package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
-               # enableCustomDeployment: true
-               # DeploymentType: zipDeploy
-               # TakeAppOfflineFlag: false
     - deployment: VMDeploy
       displayName: VM Deploy
       environment:
