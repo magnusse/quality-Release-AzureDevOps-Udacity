@@ -56,9 +56,9 @@ def remove_items(driver):
 def uitests():
     options = ChromeOptions()
 # uncomment this for run in Azure DevOps
-#    options.add_argument("--headless")
-#    driver = webdriver.Chrome(options=options)
-    driver = webdriver.Chrome()
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(options=options)
+#    driver = webdriver.Chrome()
     print("Browser started successfully.")
     print("starting now tests")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
