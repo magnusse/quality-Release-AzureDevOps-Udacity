@@ -154,6 +154,7 @@ stages:
                   unzip -o $(Pipeline.Workspace)/selenium/selenium-tests.zip -d .
                   sudo mkdir /var/logs
                   python3 UItest.py > ui-logs.log
+                  cat ui-logs.log
                   sudo mv ui-logs.log /var/logs
 
 
