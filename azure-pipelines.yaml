@@ -87,9 +87,9 @@ stages:
       - upload: $(Build.ArtifactStagingDirectory)/selenium-tests.zip
         artifact: selenium
   - stage: Deploy
-    displayName: Deploy FakeRest WebApp
     jobs:
     - deployment: FakeRestAPI
+      displayName: Deploy FakeRest WebApp
       pool:
         vmImage: 'Ubuntu-18.04'
       environment: 'Test-VM'
@@ -97,15 +97,12 @@ stages:
         runOnce:
           deploy:
             steps:
-            - task: AzureWebApp@1
+            - task: AzureRmWebAppDeployment@4
               displayName: 'Deploy Azure Web App'
               inputs:
-                azureSubscription: 'UdacityQualityReleasesSC'
-                appName: 'WebApp-SMArtificial'
-                appType: 'WebApp'
-                package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
-                deploymentMethod: auto
-
+                azureSubscription: 'UdacityQR-AppServices'
+                WebAppName: 'WebAppSmartificial'
+                Package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
     - deployment: VMDeploy
       displayName: VM Deploy
       environment:
@@ -156,7 +153,7 @@ stages:
                 script: |
                   unzip -o $(Pipeline.Workspace)/selenium/selenium-tests.zip -d .
                   sudo mkdir /var/logs
-                  python3 uitests.py > ui-logs.log
+                  python3 UItest.py > ui-logs.log
                   sudo mv ui-logs.log /var/logs
 
   - stage: UITests
